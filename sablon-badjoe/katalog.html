@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog - Sablon Badjoe</title>
+    
+    <!-- CSS Utama -->
+    <link rel="stylesheet" href="css/style.css" />
+    
+    <!-- CSS Khusus Katalog -->
+    <link rel="stylesheet" href="css/katalog.css" />
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+    <!-- ====== NAVBAR ====== -->
+    <nav id="navbar" class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <span class="logo-icon">👕</span>
+                <span class="logo-text">Sablon <span class="highlight">Badjoe</span></span>
+            </div>
+            <div class="navbar-menu" id="navbarMenu">
+                <a href="index.html">Beranda</a>
+                <a href="katalog.html" class="active">Katalog</a>
+                <a href="tentang.html">Tentang</a>
+                <a href="kontak.html">Kontak</a>
+            </div>
+            <div class="navbar-actions">
+                <a href="https://wa.me/6283843547129" target="_blank" class="btn-wa">
+                    <i class="fab fa-whatsapp"></i> Chat Admin
+                </a>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ====== PAGE HERO ====== -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>📦 Katalog Produk</h1>
+            <p>Klik produk untuk melihat detail dan penjelasan harganya</p>
+        </div>
+    </section>
+
+    <!-- ====== PRODUCTS GRID ====== -->
+    <section class="catalog-products" style="margin-top: -20px;">
+        <div class="container">
+            <div class="products-grid" id="productGrid">
+                <!-- Produk akan diisi oleh JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== MODAL DETAIL PRODUK ====== -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div id="modalImageContainer" class="modal-image"></div>
+            <h3 id="modalTitle">Judul Produk</h3>
+            <div id="modalPrice" class="price">Rp 0</div>
+            
+            <!-- Tempat deskripsi ditampilkan (Bisa HTML) -->
+            <div id="modalDesc"></div>
+            
+            <button id="modalOrderBtn" class="btn-order">
+                <i class="fab fa-whatsapp"></i> Pesan Sekarang
+            </button>
+        </div>
+    </div>
+
+    <!-- ====== FOOTER ====== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <span class="logo-icon">👕</span>
+                    <span class="logo-text">Sablon <span class="highlight">Badjoe</span></span>
+                    <p>Penyedia jasa sablon berkualitas dengan pengerjaan cepat dan hasil premium.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="https://wa.me/6283843547129" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-menu">
+                    <h4>Menu</h4>
+                    <ul>
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="katalog.html">Katalog</a></li>
+                        <li><a href="tentang.html">Tentang</a></li>
+                        <li><a href="kontak.html">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Kontak</h4>
+                    <ul>
+                        <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/6283843547129">0838-4354-7129</a></li>
+                        <li><i class="fas fa-envelope"></i> sablonbadjoe@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Kp. Sekejengkol Rt01/Rw12 Des. Cimekar Kec. Cileunyi Kab. Bandung</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Sablon Badjoe. All rights reserved. Made with ❤️</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ====== FLOATING WA ====== -->
+    <a href="https://wa.me/6283843547129" target="_blank" class="floating-wa">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- ====== SCRIPTS ====== -->
+    <script src="js/script.js"></script>
+    <script>
+        // Data Produk 
+        const products = [
+            {
+                id: 1,
+                name: "Kaos Sablon Custom",
+                price: 55000,
+                image: "images/pricis bikin kaos.jpeg",
+                description: `
+                <div class="deskripsi-produk">
+                    <p>Bikin kaos sablon custom untuk acara, komunitas, atau <em>brand</em> kamu di <strong>Sablon Badjoe</strong>. Kami menyediakan berbagai pilihan bahan dengan harga terjangkau. Harga yang tertera sudah termasuk sablon 1 sisi (ukuran A4).</p>
+
+                    <h4>Pilihan Bahan & Harga (Tergantung Kuantitas):</h4>
+                    <ul>
+                        <li><strong>Cotton Combed 30s:</strong> Rp 48.000 - Rp 55.000 / pcs</li>
+                        <li><strong>Carded 30s:</strong> Rp 40.000 - Rp 50.000 / pcs</li>
+                        <li><strong>PE 30s:</strong> Rp 22.000 - Rp 36.000 / pcs</li>
+                    </ul>
+
+                    <h4>Spesifikasi:</h4>
+                    <ul>
+                        <li>Termasuk Sablon 1 Sisi ukuran A4</li>
+                        <li>Tersedia panduan ukuran (<em>Size Chart</em>) untuk Anak - Junior (Size 2 - 18) dan Dewasa (S, M, L, XL, 2XL, 3XL)</li>
+                    </ul>
+
+                    <h4>Kustomisasi Tambahan (Opsional):</h4>
+                    <ul>
+                        <li><strong>Model:</strong> Lengan panjang (+Rp 5.000) | Pola Kaos Raglan (+Rp 3.000) | Model berkerah (+Rp 15.000/pcs)</li>
+                        <li><strong>Upsize:</strong> XXL (+Rp 5.000) | XXXL (+Rp 10.000)</li>
+                        <li><strong>Upgrade Ketebalan (Gramasi):</strong> 24s (+Rp 2.000) | 20s (+Rp 3.000)</li>
+                        <li><strong>Upgrade Sablon:</strong> Ukuran A3 (+Rp 3.000) | Tambah posisi/warna sablon (+Rp 1.500)</li>
+                    </ul>
+                </div>`
+            },
+            {
+                id: 2,
+                name: "Kaos Kerah / Polo Shirt",
+                price: 90000,
+                image: "images/kaos kerah.jpeg",
+                description: `
+                <div class="deskripsi-produk">
+                    <p>Tampil lebih profesional dan rapi dengan <strong>Kaos Kerah / Polo Shirt</strong> custom dari <strong>Sablon Badjoe</strong>. Sangat cocok untuk seragam panitia, pakaian kerja, atau <em>merchandise</em> premium. Anda bebas memilih menggunakan aplikasi sablon maupun bordir!</p>
+
+                    <h4>Pilihan Bahan & Harga (Tergantung Kuantitas):</h4>
+                    <ul>
+                        <li><strong>Cotton Lacoste / Pique:</strong> Rp 75.000 - Rp 90.000 / pcs</li>
+                        <li><strong>Lacoste PE Soft:</strong> Rp 55.000 - Rp 70.000 / pcs</li>
+                    </ul>
+
+                    <h4>Harga Sudah Termasuk:</h4>
+                    <ul>
+                        <li>Aplikasi Sablon atau Bordir (Maksimal ukuran A4)</li>
+                        <li>Bebas pilih jumlah komposisi ukuran untuk <em>size</em> reguler (S, M, L, XL)</li>
+                        <li>Panduan ukuran (<em>Size Chart</em>) tersedia untuk Anak - Junior (Size 2 - 18) dan Dewasa (S - 3XL)</li>
+                    </ul>
+
+                    <h4>Kustomisasi Tambahan (Opsional):</h4>
+                    <ul>
+                        <li><strong>Model Tangan & Pola:</strong> Lengan panjang (+Rp 5.000) | Pola reglan beda warna (+Rp 3.000) | Pola kombinasi baru (+Rp 5.000)</li>
+                        <li><strong>Upsize:</strong> XXL (+Rp 5.000) | XXXL (+Rp 10.000)</li>
+                        <li><strong>Upgrade Desain:</strong> Tambah posisi sablon / bordir (+Rp 7.000)</li>
+                    </ul>
+                </div>`
+            },
+            {
+                id: 3,
+                name: "Jersey Custom Drifit",
+                price: 70000,
+                image: "images/jersi.jpeg",
+                description: `
+                <div class="deskripsi-produk">
+                    <p>Bikin jersey tim olahraga kebanggaanmu di <strong>Sablon Badjoe</strong>! Kami menggunakan bahan Drifit / Serena yang adem, menyerap keringat, dan nyaman untuk berolahraga. Tersedia pilihan pesanan untuk atasan saja atau setelan lengkap.</p>
+
+                    <h4>Pilihan Motif Standar & Harga:</h4>
+                    <p><em>Pilihan Motif: Benzema, Kasa, Jarum, Bilabong, Milano, Nike</em></p>
+                    <ul>
+                        <li><strong>Atasan Lengan Pendek:</strong> Rp 70.000 - Rp 83.000 / pcs</li>
+                        <li><strong>Setelan Lengan Pendek:</strong> Rp 120.000 - Rp 140.000 / set</li>
+                    </ul>
+
+                    <h4>Pilihan Motif Premium & Harga:</h4>
+                    <p><em>Pilihan Motif: Smash, Rhabit, Superior, Airwalk, Embos Topo, Stripe</em></p>
+                    <ul>
+                        <li><strong>Atasan Lengan Pendek:</strong> Rp 90.000 - Rp 100.000 / pcs</li>
+                        <li><strong>Setelan Lengan Pendek:</strong> Rp 160.000 - Rp 185.000 / set</li>
+                    </ul>
+
+                    <h4>Spesifikasi & Kustomisasi Tambahan:</h4>
+                    <ul>
+                        <li><strong>Kerah Standar (Gratis):</strong> Leher O (O-Neck) atau V-Neck</li>
+                        <li><strong>Variasi Kerah:</strong> Kerah Double V (+Rp 7.000) | Kerah Resleting pendek (+Rp 10.000) | <em>*Tersedia banyak variasi kerah Polo/Shanghai lainnya dengan biaya tambahan menyesuaikan model.</em></li>
+                        <li><strong>Model & Bahan:</strong> Tangan Panjang (+Rp 12.000) | Upgrade Bahan Milano (+Rp 7.000) | Spandex Lycra (+Rp 14.000)</li>
+                    </ul>
+
+                    <h4>Informasi Ukuran (Size Chart):</h4>
+                    <ul>
+                        <li>Tersedia panduan ukuran untuk Anak - Junior (Size 32 - 48) dan Dewasa (S - 3XL).</li>
+                        <li><strong>KIDS SIZE:</strong> Dapatkan potongan harga <strong>- Rp 20.000</strong> khusus untuk pesanan ukuran anak-anak!</li>
+                    </ul>
+                </div>`
+            },
+            {
+                id: 4,
+                name: "Hoodie Sablon Custom",
+                price: 159000,
+                image: "images/hoodie.jpeg",
+                description: `
+                <div class="deskripsi-produk">
+                    <p>Wujudkan desain hoodie impianmu dengan layanan custom dari <strong>Sablon Badjoe</strong>! Kami memproduksi hoodie berkualitas yang nyaman dipakai dengan pilihan bahan premium. Harga yang tertera sudah termasuk sablon 1 sisi (ukuran A4), sangat cocok untuk kebutuhan komunitas, event, atau <em>brand clothing</em> Anda.</p>
+
+                    <h4>Pilihan Bahan & Harga (Tergantung Kuantitas):</h4>
+                    <ul>
+                        <li><strong>Bahan Fleece CVC:</strong> Rp 125.000 - Rp 159.000 / pcs</li>
+                        <li><strong>Bahan Baby Terry:</strong> Rp 120.000 - Rp 135.000 / pcs</li>
+                    </ul>
+
+                    <h4>Spesifikasi:</h4>
+                    <ul>
+                        <li>Termasuk Sablon 1 Sisi ukuran A4 (30cm x 20cm)</li>
+                        <li>Tersedia panduan ukuran (<em>Size Chart</em>) lengkap untuk Anak-anak hingga Dewasa (S, M, L, XL, 2XL, 3XL)</li>
+                    </ul>
+
+                    <h4>Kustomisasi Tambahan (Opsional):</h4>
+                    <ul>
+                        <li><strong>Aksesoris:</strong> Zipper / Resleting (+Rp 10.000)</li>
+                        <li><strong>Pola:</strong> Reglan & Kombinasi (+Rp 3.000)</li>
+                        <li><strong>Upsize:</strong> XXL (+Rp 5.000) | XXXL (+Rp 10.000)</li>
+                        <li><strong>Furing:</strong> Lapisan dalam puring (+Rp 12.500) | Lapisan PE (+Rp 25.000)</li>
+                        <li><strong>Upgrade Sablon:</strong> Ukuran A3 (+Rp 3.000) | Tambah 1 Warna (+Rp 2.000)</li>
+                    </ul>
+                </div>` 
+            },
+            {
+                id: 5,
+                name: "Custom Lanyard Print 2 Sisi",
+                price: 8000,
+                image: "images/lanyad.jpeg",
+                description: `
+                <div class="deskripsi-produk">
+                    <p>Cetak tali lanyard custom desain sesukamu di <strong>Sablon Badjoe</strong>! Sangat cocok untuk kebutuhan identitas perusahaan, sekolah, event, komunitas, atau panitia acara.</p>
+
+                    <h4>Pilihan Ukuran Lebar & Harga:</h4>
+                    <ul>
+                        <li><strong>Lanyard 1,5 CM (Panjang 90cm x Lebar 1,5cm):</strong> Rp 8.000 / pcs</li>
+                        <li><strong>Lanyard 2 CM (Panjang 45cm x Lebar 2cm):</strong> Rp 10.000 / pcs</li>
+                        <li><strong>Lanyard 2,5 CM (Panjang 45cm x Lebar 2,5cm):</strong> Rp 12.000 / pcs</li>
+                    </ul>
+
+                    <h4>Spesifikasi & Kelengkapan:</h4>
+                    <ul>
+                        <li><strong>Bahan:</strong> Polyester Tissue / Polyester Nylon berkualitas tinggi</li>
+                        <li><strong>Metode Cetak:</strong> Print 2 Sisi (Full Colour / Separasi)</li>
+                        <li><strong>Kelengkapan:</strong> Pengait (Kait) & Stopper sudah termasuk (gratis)</li>
+                    </ul>
+
+                    <h4>Ketentuan Pemesanan:</h4>
+                    <ul>
+                        <li>Harga di atas berlaku untuk <strong>minimal order 20 pcs ke atas</strong>.</li>
+                        <li>Untuk pemesanan custom satuan (di bawah ketentuan), dikenakan biaya tambahan sebesar +Rp 10.000 / pcs.</li>
+                    </ul>
+                </div>`
+            }
+        ];
+
+        // Render Produk ke dalam Grid
+        function renderProducts(productsData) {
+            const grid = document.getElementById('productGrid');
+            if (!grid) return;
+            
+            grid.innerHTML = productsData.map(product => `
+                <div class="product-card" onclick="openModal(${product.id})">
+                    <div class="product-image" style="padding: 0; overflow: hidden; background: #f8fafc; border-bottom: 1px solid #eee;">
+                        <img src="${product.image}" class="card-img" alt="${product.name}">
+                    </div>
+                    <div class="product-info">
+                        <h4>${product.name}</h4>
+                        <div class="price">Harga Mulai Rp ${new Intl.NumberFormat('id-ID').format(product.price)}</div>
+                        <button class="btn-order" style="background: #0f172a; color: white;">
+                            <i class="fas fa-eye"></i> Lihat Detail
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Fungsi Membuka Modal (Popup)
+        function openModal(id) {
+            const product = products.find(p => p.id === id);
+            if(!product) return;
+            
+            // Isi konten modal (Gambar menyesuaikan modal)
+            document.getElementById('modalImageContainer').innerHTML = `<img src="${product.image}" alt="${product.name}">`;
+            document.getElementById('modalTitle').innerText = product.name;
+            document.getElementById('modalPrice').innerText = `Harga Mulai: Rp ${new Intl.NumberFormat('id-ID').format(product.price)}`;
+            
+            // Menggunakan innerHTML agar tag HTML pada deskripsi dapat terbaca dengan baik
+            document.getElementById('modalDesc').innerHTML = product.description;
+            
+            // Atur tombol pesan di dalam modal
+            const orderBtn = document.getElementById('modalOrderBtn');
+            orderBtn.onclick = function() { orderProduct(product.name, product.price); };
+            
+            // Tampilkan modal
+            document.getElementById('productModal').style.display = 'block';
+        }
+
+        // Fungsi Menutup Modal
+        function closeModal() {
+            document.getElementById('productModal').style.display = 'none';
+        }
+
+        // Tutup modal jika user mengeklik area gelap di luar modal
+        window.onclick = function(event) {
+            const modal = document.getElementById('productModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Order via WhatsApp
+        function orderProduct(name, price) {
+            const message = `Halo Admin Sablon Badjoe!%0A%0A*Saya tertarik dengan produk ini:*%0A%0A📦 *${name}*%0A📝 Saya ingin bertanya lebih lanjut terkait pemesanan dan harganya.%0A%0ATerima kasih! 🙏`;
+            window.open(`https://wa.me/6283843547129?text=${message}`, '_blank');
+        }
+
+        // Init pertama kali halaman dimuat
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProducts(products);
+        });
+    </script>
+</body>
+</html>
